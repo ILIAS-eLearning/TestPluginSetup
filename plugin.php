@@ -14,3 +14,5 @@ $ilias_max_version = "7.999";
 // optional, but useful: Add one or more responsible persons and a contact email
 $responsible = "Richard Klees";
 $responsible_mail = "richard.klees@concepts-and-training.de";
+
+$supports_cli_setup = false;
