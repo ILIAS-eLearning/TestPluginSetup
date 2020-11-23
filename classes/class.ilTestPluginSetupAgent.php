@@ -109,4 +109,14 @@ class ilTestPluginSetupAgent implements Setup\Agent
             false
         );
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function getMigrations() : array
+    {
+        return [
+            new ilTestPluginSetupMigration()
+        ];
+    }
 }
