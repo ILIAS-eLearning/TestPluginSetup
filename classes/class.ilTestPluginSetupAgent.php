@@ -5,9 +5,11 @@
 use ILIAS\Setup;
 use ILIAS\Refinery;
 use ILIAS\Data;
+use ILIAS\Setup\Agent\HasNoNamedObjective;
 
 class ilTestPluginSetupAgent implements Setup\Agent
 {
+	use HasNoNamedObjective;
     /**
      * @var Refinery\Factory
      */
