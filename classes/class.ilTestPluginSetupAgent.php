@@ -117,4 +117,9 @@ class ilTestPluginSetupAgent implements Setup\Agent
     {
         return [];
     }
+
+    public function getNamedObjectives(?Setup\Config $config = null): array
+    {
+        return [];
+    }
 }
