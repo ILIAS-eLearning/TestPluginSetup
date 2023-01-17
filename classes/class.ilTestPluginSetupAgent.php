@@ -53,14 +53,20 @@ class ilTestPluginSetupAgent implements Setup\Agent
      */
     public function getInstallObjective(Setup\Config $config = null) : Setup\Objective
     {
-        return new Setup\Objective\CallableObjective(
-            function($env) use ($config) {
-                echo
-                "\n\nThis is TestPluginSetupAgent::getInstallObjective calling.\n".
-                "The configuration is:\n".json_encode($config->data)."\n\n";
-            },
-            "TestPluginSetupAgent::getInstallObjective",
-            false
+        return new Setup\ObjectiveCollection(
+            "Complete Installation of TestPluginSetup",
+            "false",
+            new Setup\Objective\CallableObjective(
+                function($env) use ($config) {
+                    echo
+                    "\n\nThis is TestPluginSetupAgent::getInstallObjective calling.\n".
+                    "The configuration is:\n".json_encode($config->data)."\n\n";
+                },
+                "TestPluginSetupAgent::getInstallObjective",
+                false
+            ),
+            new ilComponentInstallPluginObjective("TestPluginSetup"),
+            new ilComponentActivatePluginsObjective("TestPluginSetup")
         );
     }
 
