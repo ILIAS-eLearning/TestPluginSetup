@@ -124,7 +124,7 @@ class ilTestPluginSetupAgent implements Setup\Agent
     public function getNamedObjectives(?\ILIAS\Setup\Config $config = null): array
     {
         return [
-            "test-plugin" => new Setup\Objective\CallableObjective(
+            "test-plugin" => new class(
                 function($env) use ($config) {
                     echo
                         "\n\nThis is TestPluginSetupAgent::getNamedObjectives calling.\n".
@@ -133,7 +133,11 @@ class ilTestPluginSetupAgent implements Setup\Agent
                 },
                 "TestPluginSetupAgent::getNamedObjectives",
                 false
-            )
+            ) extends Setup\Objective\CallableObjective {
+                public function getDescription() : string {
+                    return "This is TestPluginSetupAgent::getNamedObjectives calling.";
+                }
+            }
         ];
     }
 }
