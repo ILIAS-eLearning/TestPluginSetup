@@ -57,7 +57,8 @@ class ilTestPluginSetupAgent implements Setup\Agent
             function($env) use ($config) {
                 echo
                 "\n\nThis is TestPluginSetupAgent::getInstallObjective calling.\n".
-                "The configuration is:\n".json_encode($config->data)."\n\n";
+                "The configuration is:\n".
+                ($config->data !== null ? json_encode($config->data ?? []) : "null" ) . "\n\n";
             },
             "TestPluginSetupAgent::getInstallObjective",
             false
@@ -83,7 +84,7 @@ class ilTestPluginSetupAgent implements Setup\Agent
     /**
      * @inheritdoc
      */
-    public function getBuildArtifactObjective() : Setup\Objective
+    public function getBuildObjective(): \ILIAS\Setup\Objective
     {
         return new Setup\Objective\CallableObjective(
             function($env) {
@@ -116,5 +117,21 @@ class ilTestPluginSetupAgent implements Setup\Agent
     public function getMigrations() : array
     {
         return [];
+    }
+
+    public function getNamedObjectives(?\ILIAS\Setup\Config $config = null): array
+    {
+        return [
+            "test-plugin" => new Setup\Objective\CallableObjective(
+                function($env) use ($config) {
+                    echo
+                        "\n\nThis is TestPluginSetupAgent::getNamedObjectives calling.\n".
+                        "The configuration is:\n".
+                        ($config->data !== null ? json_encode($config->data ?? []) : "null" ) . "\n\n";
+                },
+                "TestPluginSetupAgent::getNamedObjectives",
+                false
+            )
+        ];
     }
 }
