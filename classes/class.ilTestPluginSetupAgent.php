@@ -128,4 +128,10 @@ class ilTestPluginSetupAgent implements Setup\Agent
     {
         return [];
     }
+
+     public function getBuildObjective(): Setup\Objective
+    {
+        return new Setup\Objective\NullObjective();
+    }
+
 }
