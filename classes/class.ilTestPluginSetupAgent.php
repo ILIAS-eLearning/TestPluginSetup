@@ -89,7 +89,7 @@ class ilTestPluginSetupAgent implements Setup\Agent
     /**
      * @inheritdoc
      */
-    public function getBuildArtifactObjective() : Setup\Objective
+    public function getBuildObjective() : Setup\Objective
     {
         return new Setup\Objective\CallableObjective(
             function($env) {
@@ -127,11 +127,6 @@ class ilTestPluginSetupAgent implements Setup\Agent
     public function getNamedObjectives(?Setup\Config $config = null): array
     {
         return [];
-    }
-
-     public function getBuildObjective(): Setup\Objective
-    {
-        return new Setup\Objective\NullObjective();
     }
 
 }
