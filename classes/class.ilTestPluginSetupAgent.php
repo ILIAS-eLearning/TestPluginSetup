@@ -41,8 +41,7 @@ class ilTestPluginSetupAgent implements Setup\Agent
     {
         return $this->refinery->custom()->transformation(function ($data) {
             return new class($data) implements Setup\Config {
-                public function __construct($data) {
-                    $this->data = $data;
+                public function __construct(public $data) {
                 }
             };
         });

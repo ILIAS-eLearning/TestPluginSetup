@@ -4,6 +4,7 @@
 
 use ILIAS\Setup;
 use ILIAS\Setup\Environment;
+use ILIAS\Setup\Objective;
 
 class ilTestPluginSetupMigration implements Setup\Migration
 {
