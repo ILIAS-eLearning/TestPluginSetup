@@ -1,10 +1,12 @@
 <?php
 
+use ILIAS\Cron\CronHookPlugin;
+
 /**
  * Plugin to test the setup for plugins. ilCronHookPlugin is used as a slot here
  * because of the minimum requirements of these plugins.
  */
-class ilTestPluginSetupPlugin extends ilCronHookPlugin {
+class ilTestPluginSetupPlugin extends CronHookPlugin {
 	
 	function getPluginName(): string 
 	{
@@ -16,8 +18,8 @@ class ilTestPluginSetupPlugin extends ilCronHookPlugin {
 		return [];
 	}
 
-	public function getCronJobInstance($a_job_id): ilCronJob
-	{
+	public function getCronJobInstance($a_job_id): \ILIAS\Cron\CronJob
+    {
         throw new \LogicException(
             "This plugin does not actually provide any cron jobs."
         );
